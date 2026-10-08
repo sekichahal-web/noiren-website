@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>NOIREN Admin</title>
+<style>
+body{margin:0;background:#0b0b0b;color:#f4efe5;font-family:Arial,sans-serif}header{padding:18px 20px;border-bottom:1px solid #292929;display:flex;justify-content:space-between;align-items:center}.logo{font:25px Georgia;letter-spacing:5px}.tag{font-size:10px;color:#d5ad5b;letter-spacing:2px}main{max-width:900px;margin:auto;padding:20px}.card{background:#151515;border:1px solid #292929;border-radius:15px;padding:18px;margin-bottom:18px}h2{font-family:Georgia;font-weight:400}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}label{display:block;font-size:12px;color:#aaa;margin-bottom:6px}input,textarea{width:100%;box-sizing:border-box;background:#0e0e0e;color:#fff;border:1px solid #333;border-radius:9px;padding:12px;font-size:15px}textarea{min-height:90px}.full{grid-column:1/-1}button{border:0;border-radius:9px;padding:12px 16px;font-weight:700}.primary{background:#d5ad5b;color:#111}.dark{background:#292929;color:#fff}.danger{background:#652525;color:#fff}.actions{display:flex;gap:9px;margin-top:14px;flex-wrap:wrap}.hidden{display:none}.status{font-size:13px;color:#aaa;margin-top:10px}.products{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}.product{border:1px solid #292929;border-radius:12px;overflow:hidden}.product img{width:100%;height:180px;object-fit:cover}.pbody{padding:12px}.price{color:#d5ad5b;font-weight:700;margin:5px 0}.small{font-size:12px;color:#aaa}@media(max-width:650px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+</style></head><body>
+<header><div><div class="logo">NOIREN</div><div class="tag">WEAR THE NIGHT.</div></div><button id="logout" class="dark hidden">Logout</button></header>
+<main>
+<section id="login" class="card"><h2>Admin Login</h2><div class="grid"><div><label>Email</label><input id="email" type="email"></div><div><label>Password</label><input id="pass" type="password"></div></div><div class="actions"><button id="loginBtn" class="primary">Login</button></div><div id="loginMsg" class="status"></div></section>
+<section id="app" class="hidden">
+<div class="card"><h2 id="title">Add Product</h2><div class="grid">
+<div><label>Product name</label><input id="name" placeholder="Oudh Attar"></div><div><label>Price ₹</label><input id="price" type="number"></div>
+<div><label>Size</label><input id="size" value="6 ml"></div><div><label>Category</label><input id="category" placeholder="Oudh"></div>
+<div class="full"><label>Description</label><textarea id="desc"></textarea></div><div class="full"><label>Product photo</label><input id="photo" type="file" accept="image/*"></div>
+</div><div class="actions"><button id="save" class="primary">Save Product</button><button id="cancel" class="dark hidden">Cancel Edit</button></div><div id="msg" class="status"></div></div>
+<div class="card"><h2>Products</h2><div id="list" class="products"></div><div id="listMsg" class="status"></div></div>
+</section></main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script>
+const sb=supabase.createClient("https://khapvtsujgtxdezjkkeh.supabase.co","sb_publishable_CIYRrwfNZVn4on0pK6ndig_2bYZk_L1");let editId=null;
+const $=x=>document.getElementById(x),msg=(x,t)=>$(x).textContent=t;
+function logged(v){$("login").classList.toggle("hidden",v);$("app").classList.toggle("hidden",!v);$("logout").classList.toggle("hidden",!v)}
+async function init(){let {data:{session}}=await sb.auth.getSession();logged(!!session);if(session)load()}
+$("loginBtn").onclick=async()=>{msg("loginMsg","Logging in...");let {error}=await sb.auth.signInWithPassword({email:$("email").value,password:$("pass").value});if(error)return msg("loginMsg",error.message);logged(true);load()};
+$("logout").onclick=async()=>{await sb.auth.signOut();logged(false)};
+async function load(){msg("listMsg","Loading...");let {data,error}=await sb.from("products").select("*").order("created_at",{ascending:false});if(error)return msg("listMsg",error.message);$("list").innerHTML=data.map(p=>`<article class="product">${p.image_url?`<img src="${p.image_url}" alt="">`:""}<div class="pbody"><b>${esc(p.name)}</b><div class="price">₹${Number(p.price).toLocaleString("en-IN")}</div><div class="small">${esc(p.size||"")} · ${esc(p.category||"")}</div><div class="actions"><button class="dark" onclick='edit(${JSON.stringify(p)})'>Edit</button><button class="danger" onclick="del('${p.id}')">Delete</button></div></div></article>`).join("");msg("listMsg",data.length+" product(s)")}
+function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]))}
+window.edit=p=>{editId=p.id;$("title").textContent="Edit Product";$("name").value=p.name||"";$("price").value=p.price||"";$("size").value=p.size||"6 ml";$("category").value=p.category||"";$("desc").value=p.description||"";$("cancel").classList.remove("hidden");scrollTo(0,0)}
+window.del=async id=>{if(!confirm("Delete this product?"))return;let {error}=await sb.from("products").delete().eq("id",id);if(error)alert(error.message);else load()}
+$("cancel").onclick=()=>reset();
+$("save").onclick=async()=>{let name=$("name").value.trim(),price=Number($("price").value);if(!name||!price)return msg("msg","Name and price required.");msg("msg","Saving...");let image_url=null;if(editId){let r=await sb.from("products").select("image_url").eq("id",editId).single();image_url=r.data?.image_url||null}
+let f=$("photo").files[0];if(f){let path=crypto.randomUUID()+"-"+f.name.toLowerCase().replace(/[^a-z0-9._-]/g,"-");let u=await sb.storage.from("product-images").upload(path,f);if(u.error)return msg("msg","Upload failed: "+u.error.message);image_url=sb.storage.from("product-images").getPublicUrl(path).data.publicUrl}
+let payload={name,price,size:$("size").value.trim(),category:$("category").value.trim(),description:$("desc").value.trim(),image_url};let r=editId?await sb.from("products").update(payload).eq("id",editId):await sb.from("products").insert(payload);if(r.error)return msg("msg",r.error.message);reset();load()}
+function reset(){editId=null;$("title").textContent="Add Product";$("name").value="";$("price").value="";$("size").value="6 ml";$("category").value="";$("desc").value="";$("photo").value="";$("cancel").classList.add("hidden");msg("msg","")}
+init();
+</script></body></html>
