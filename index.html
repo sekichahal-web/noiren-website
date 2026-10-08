@@ -37,7 +37,7 @@ footer{padding:45px 6%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
 const client=supabase.createClient("https://khapvtsujgtxdezjkkeh.supabase.co","sb_publishable_CIYRrwfNZVn4on0pK6ndig_2bYZk_L1");
-const waNumber="919999999999";
+const waNumber="918053660076";
 const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 async function loadProducts(){
  const {data,error}=await client.from("products").select("*").order("created_at",{ascending:false});
