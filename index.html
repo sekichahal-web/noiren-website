@@ -1,163 +1,50 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080808">
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>NOIREN — Wear the Night</title>
-<meta name="description" content="NOIREN — premium fragrances made for unforgettable moments.">
+<meta name="description" content="NOIREN — premium attars.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@400;500;600&display=swap');
 :root{--bg:#080808;--panel:#111;--text:#f4f1eb;--muted:#aaa;--gold:#c9a76a;--line:#292929}
-*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--text);font-family:Montserrat,Arial,sans-serif}
-a{text-decoration:none;color:inherit}.top{font-size:11px;letter-spacing:.12em;text-align:center;padding:10px;border-bottom:1px solid var(--line);color:#d8d8d8}
-nav{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid #171717;position:sticky;top:0;background:rgba(8,8,8,.92);backdrop-filter:blur(12px);z-index:20}
-.logo{font-family:"Cormorant Garamond",serif;font-size:34px;letter-spacing:.22em}.logo small{display:block;font-family:Montserrat;font-size:8px;letter-spacing:.45em;text-align:center;margin-top:-4px;color:#aaa}
-.links{display:flex;gap:30px;font-size:12px;letter-spacing:.14em}.links a:hover{color:var(--gold)}
-.icons{display:flex;gap:18px;font-size:18px}.menu{display:none}
-.hero{min-height:72vh;display:flex;align-items:center;padding:7% 7%;background:
-linear-gradient(90deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.58) 45%,rgba(0,0,0,.25) 100%),
-url("attar-hero.png") center/cover no-repeat}.hero-inner{max-width:650px}.eyebrow{letter-spacing:.35em;font-size:11px;color:#ccc}.hero h1{font-family:"Cormorant Garamond",serif;font-size:clamp(70px,10vw,140px);font-weight:400;letter-spacing:.16em;margin:15px 0 0}.hero h2{font-size:18px;letter-spacing:.55em;margin:0 0 20px}.hero p{max-width:480px;color:#ccc;line-height:1.8}.btn{display:inline-block;background:#f2eee7;color:#080808;padding:15px 28px;font-size:11px;font-weight:600;letter-spacing:.2em;margin-top:15px}.btn:hover{background:var(--gold)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font-family:Montserrat,Arial,sans-serif}
+a{text-decoration:none;color:inherit}.top{font-size:11px;letter-spacing:.12em;text-align:center;padding:10px;border-bottom:1px solid var(--line)}
+nav{height:78px;display:flex;align-items:center;justify-content:space-between;padding:0 6%;border-bottom:1px solid #171717;position:sticky;top:0;background:#080808eb;backdrop-filter:blur(12px);z-index:20}
+.logo,.footer-logo{font-family:"Cormorant Garamond",serif;font-size:34px;letter-spacing:.22em}.logo small{display:block;font-family:Montserrat;font-size:8px;letter-spacing:.45em;text-align:center;margin-top:-4px;color:#aaa}
+.links{display:flex;gap:30px;font-size:12px;letter-spacing:.14em}.links a:hover{color:var(--gold)}.icons{display:flex;gap:18px;font-size:18px}.menu{display:none}
+.hero{min-height:72vh;display:flex;align-items:center;padding:7%;background:linear-gradient(90deg,#000db,#00094d,#0003),url("attar-hero.png") center/cover no-repeat}.hero-inner{max-width:650px}.eyebrow{letter-spacing:.35em;font-size:11px;color:#ccc}.hero h1{font-family:"Cormorant Garamond";font-size:clamp(70px,10vw,140px);font-weight:400;letter-spacing:.16em;margin:15px 0 0}.hero h2{font-size:18px;letter-spacing:.55em;margin:0 0 20px}.hero p{max-width:480px;color:#ccc;line-height:1.8}.btn{display:inline-block;background:#f2eee7;color:#080808;padding:15px 28px;font-size:11px;font-weight:600;letter-spacing:.2em;margin-top:15px}
 .features{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--line)}.feature{padding:24px;text-align:center;border-right:1px solid var(--line)}.feature:last-child{border:0}.feature b{font-size:11px;letter-spacing:.15em}.feature span{display:block;color:#999;font-size:10px;margin-top:8px}
-section{padding:75px 6%}.section-title{text-align:center;font-family:"Cormorant Garamond",serif;font-size:38px;letter-spacing:.15em;font-weight:400;margin:0 0 38px}.cats{display:grid;grid-template-columns:1fr 1fr;gap:18px}.cat{min-height:290px;padding:45px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(0deg,rgba(0,0,0,.82),rgba(0,0,0,.15)),url("hero.png") center/cover}.cat:nth-child(2){background-position:70% center}.cat h3{font-family:"Cormorant Garamond";font-size:42px;margin:0 0 5px}.cat p{color:#ccc;margin:0 0 18px}.cat .btn{align-self:flex-start}
-.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#101010;border:1px solid var(--line);overflow:hidden}.bottle{height:235px;background:radial-gradient(circle at 50% 55%,#353535 0,#161616 35%,#0b0b0b 70%);display:flex;align-items:center;justify-content:center}.fake-bottle{width:72px;height:118px;border-radius:7px 7px 12px 12px;background:linear-gradient(90deg,#090909,#272727,#090909);box-shadow:0 20px 45px #000;position:relative}.fake-bottle:before{content:"";position:absolute;width:34px;height:25px;background:#090909;left:19px;top:-23px;border-radius:4px 4px 1px 1px}.fake-bottle:after{content:"NOIREN\\A";white-space:pre;position:absolute;left:0;right:0;top:48px;text-align:center;font-family:"Cormorant Garamond";font-size:9px;letter-spacing:.12em;color:#eee}.info{padding:18px}.info h4{font-family:"Cormorant Garamond";font-size:25px;margin:0 0 5px;letter-spacing:.08em}.type{font-size:9px;letter-spacing:.15em;color:#999}.price{margin-top:15px;font-weight:600}.stars{color:#d5ae63;font-size:12px;margin-top:7px}
-.story{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:#0d0d0d}.story h2{font-family:"Cormorant Garamond";font-size:52px;font-weight:400;letter-spacing:.1em}.story p{color:#aaa;line-height:1.9;max-width:560px}.story-box{min-height:360px;background:url("hero.png") center/cover;filter:grayscale(.2)}
-.news{text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.news p{color:#999}.form{display:flex;max-width:520px;margin:25px auto 0}.form input{flex:1;background:#151515;border:1px solid var(--line);padding:16px;color:white}.form button{border:0;background:#eee;padding:0 22px;letter-spacing:.12em}
-footer{padding:45px 6%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.footer-logo{font-family:"Cormorant Garamond";font-size:32px;letter-spacing:.18em}.footer p,.footer a{color:#888;font-size:11px;line-height:2}.footer h5{letter-spacing:.15em;font-size:11px}.copy{border-top:1px solid var(--line);padding:18px 6%;font-size:10px;color:#666;display:flex;justify-content:space-between}
-.payment-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#252525;border-top:1px solid #222;border-bottom:1px solid #222}.payment-strip>div{padding:24px;text-align:center;background:#101010}.payment-strip b{display:block;font-size:10px;letter-spacing:.12em}.payment-strip span{display:block;color:#888;font-size:9px;margin-top:7px}.wa{position:fixed;right:20px;bottom:20px;background:#25d366;color:#061b0b;border-radius:50px;padding:15px 20px;font-weight:600;font-size:12px;z-index:30;box-shadow:0 8px 30px #000}
-@media(max-width:800px){.payment-strip{grid-template-columns:1fr 1fr}.links{display:none}.menu{display:block}.features{grid-template-columns:1fr 1fr}.feature:nth-child(2){border-right:0}.cats,.story{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}.hero{min-height:78vh;padding:12% 6%}.hero h1{font-size:68px}.hero h2{font-size:13px}.cat{min-height:250px;padding:30px}footer{grid-template-columns:1fr 1fr}.copy{display:block;line-height:2.2}}
-@media(max-width:480px){.products{grid-template-columns:1fr}.features{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid var(--line)}.hero h1{font-size:52px}.hero h2{letter-spacing:.3em}.form{display:block}.form input,.form button{width:100%;height:48px}.form button{margin-top:8px}.story h2{font-size:42px}}
-.product-photo{max-width:100%;max-height:205px;object-fit:contain;display:block;filter:drop-shadow(0 18px 18px rgba(0,0,0,.55))}.product-order{padding:10px 14px;margin-top:12px;font-size:9px;width:100%;text-align:center}</style>
-</head>
+section{padding:75px 6%}.section-title{text-align:center;font-family:"Cormorant Garamond";font-size:38px;letter-spacing:.15em;font-weight:400;margin:0 0 38px}.cats{display:grid;grid-template-columns:1fr 1fr;gap:18px}.cat{min-height:290px;padding:45px;display:flex;flex-direction:column;justify-content:end;background:linear-gradient(0deg,#000d,#0002),url("hero.png") center/cover}.cat h3{font-family:"Cormorant Garamond";font-size:42px;margin:0 0 5px}.cat p{color:#ccc;margin:0 0 18px}.cat .btn{align-self:flex-start}
+.products{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}.card{background:#101010;border:1px solid var(--line);overflow:hidden}.bottle{height:235px;background:radial-gradient(circle at 50% 55%,#353535 0,#161616 35%,#0b0b0b 70%);display:flex;align-items:center;justify-content:center}.product-photo{max-width:100%;max-height:205px;object-fit:contain;display:block;filter:drop-shadow(0 18px 18px #0009)}.fake-bottle{width:72px;height:118px;border-radius:7px 7px 12px 12px;background:linear-gradient(90deg,#090909,#272727,#090909);box-shadow:0 20px 45px #000;position:relative}.fake-bottle:after{content:"NOIREN";position:absolute;top:50px;left:0;right:0;text-align:center;font-family:"Cormorant Garamond";font-size:9px;color:#eee}.info{padding:18px}.info h4{font-family:"Cormorant Garamond";font-size:25px;margin:0 0 5px}.type{font-size:9px;letter-spacing:.15em;color:#999}.price{margin-top:15px;font-weight:600;color:#eee}.stars{color:#d5ae63;font-size:12px;margin-top:7px}.product-order{width:100%;text-align:center;padding:11px 14px;font-size:9px}
+.story{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center;background:#0d0d0d}.story h2{font-family:"Cormorant Garamond";font-size:52px;font-weight:400}.story p{color:#aaa;line-height:1.9}.story-box{min-height:360px;background:url("hero.png") center/cover}
+.news{text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.news p{color:#999}.form{display:flex;max-width:520px;margin:25px auto}.form input{flex:1;background:#151515;border:1px solid var(--line);padding:16px;color:#fff}.form button{border:0;background:#eee;padding:0 22px}
+.payment-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#252525}.payment-strip>div{padding:24px;text-align:center;background:#101010}.payment-strip b{display:block;font-size:10px;letter-spacing:.12em}.payment-strip span{display:block;color:#888;font-size:9px;margin-top:7px}
+footer{padding:45px 6%;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:30px}.footer-logo{font-size:32px}.footer p,.footer a{color:#888;font-size:11px;line-height:2}.footer h5{letter-spacing:.15em;font-size:11px}.copy{border-top:1px solid var(--line);padding:18px 6%;font-size:10px;color:#666;display:flex;justify-content:space-between}.wa{position:fixed;right:20px;bottom:20px;background:#25d366;color:#061b0b;border-radius:50px;padding:15px 20px;font-weight:600;font-size:12px;z-index:30}
+@media(max-width:800px){.links{display:none}.menu{display:block}.features{grid-template-columns:1fr 1fr}.cats,.story{grid-template-columns:1fr}.products{grid-template-columns:1fr 1fr}.hero{min-height:78vh;padding:12% 6%}footer{grid-template-columns:1fr 1fr}}@media(max-width:480px){.products,.features{grid-template-columns:1fr}.feature{border-right:0;border-bottom:1px solid var(--line)}.hero h1{font-size:52px}.form{display:block}.form input,.form button{width:100%;height:48px}.story h2{font-size:42px}}
+</style></head>
 <body>
 <div class="top">FREE SHIPPING ON ORDERS ABOVE ₹999 &nbsp; | &nbsp; 10% OFF YOUR FIRST ORDER</div>
-<nav>
-  <a class="logo" href="#">NOIREN<small>WEAR THE NIGHT</small></a>
-  <div class="links"><a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#story">ABOUT</a><a href="#contact">CONTACT</a></div>
-  <div class="icons"><span>⌕</span><span>♙</span><span>🛒</span><span class="menu">☰</span></div>
-</nav>
-
-<main id="home">
-<section class="hero">
- <div class="hero-inner">
-  <div class="eyebrow">PREMIUM ATTAR</div>
-  <h1>NOIREN</h1><h2>WEAR THE NIGHT.</h2>
-  <p>Attars that stay beyond the moment. Crafted for presence, confidence and unforgettable nights.</p>
-  <a class="btn" href="#shop">SHOP NOW →</a>
- </div>
-</section>
-
-<div class="features">
- <div class="feature"><b>PREMIUM INGREDIENTS</b><span>Quality you can feel</span></div>
- <div class="feature"><b>LONG LASTING</b><span>Fragrance that stays</span></div>
- <div class="feature"><b>SKIN FRIENDLY</b><span>Crafted with care</span></div>
- <div class="feature"><b>PERFECT FOR GIFTING</b><span>Make moments special</span></div>
-</div>
-
-<section>
- <h2 class="section-title">EXPLORE NOIREN</h2>
- <div class="cats">
-  <div class="cat"><h3>For Him</h3><p>Bold. Confident. Unforgettable.</p><a class="btn" href="#shop">EXPLORE MEN →</a></div>
-  <div class="cat"><h3>For Her</h3><p>Elegant. Sensual. Timeless.</p><a class="btn" href="#shop">EXPLORE WOMEN →</a></div>
- </div>
-</section>
-
-<section id="shop">
- <h2 class="section-title">OUR BESTSELLERS</h2>
- <div class="products">
-  <article class="card"><div class="bottle"><div class="fake-bottle"></div></div><div class="info"><h4>ECLIPSE ATTAR</h4><div class="type">PREMIUM ATTAR · MEN</div><div class="price">₹999</div><div class="stars">★★★★★</div></div></article>
-  <article class="card"><div class="bottle"><div class="fake-bottle"></div></div><div class="info"><h4>VELVET ATTAR</h4><div class="type">PREMIUM ATTAR · WOMEN</div><div class="price">₹999</div><div class="stars">★★★★★</div></div></article>
-  <article class="card"><div class="bottle"><div class="fake-bottle"></div></div><div class="info"><h4>NOCTURNE ATTAR</h4><div class="type">PREMIUM ATTAR · UNISEX</div><div class="price">₹999</div><div class="stars">★★★★★</div></div></article>
-  <article class="card"><div class="bottle"><div class="fake-bottle"></div></div><div class="info"><h4>SIGNATURE ATTAR</h4><div class="type">PREMIUM ATTAR · MEN</div><div class="price">₹999</div><div class="stars">★★★★★</div></div></article>
- </div>
-</section>
-
-<section class="story" id="story">
- <div><h2>OUR STORY</h2><p>NOIREN was born from a simple belief — a fragrance is more than a scent; it's a part of your story. We create premium, long-lasting perfumes inspired by modern lifestyles, crafted for those who leave a mark.</p><a class="btn" href="#contact">DISCOVER NOIREN →</a></div>
- <div class="story-box"></div>
-</section>
-
-<section class="news" id="contact">
- <h2 class="section-title">JOIN THE NOIREN WORLD</h2>
- <p>Get first access to new attars, launches and exclusive offers.</p>
- <form class="form" onsubmit="event.preventDefault(); alert('Thanks for joining NOIREN.');"><input type="email" placeholder="Your email address" required><button type="submit">JOIN</button></form>
-</section>
-</main>
-
-<a class="wa" href="https://wa.me/919999999999?text=Hi%20NOIREN%2C%20I%20want%20to%20order%20a%20perfume." target="_blank">WhatsApp Order</a>
-
-
-<section class="payment-strip" aria-label="Ordering and payment">
- <div><b>🔒 SECURE PAYMENTS</b><span>UPI · Cards · Net Banking</span></div>
- <div><b>🚚 CASH ON DELIVERY</b><span>Available Across India</span></div>
- <div><b>↩ EASY RETURNS</b><span>Hassle-free support</span></div>
- <div><b>💬 WHATSAPP ORDER</b><span>Quick support</span></div>
-</section>
-
-<footer>
- <div><div class="footer-logo">NOIREN</div><p>WEAR THE NIGHT.<br>Premium attars for real moments.</p></div>
- <div><h5>QUICK LINKS</h5><a href="#home">Home</a><br><a href="#shop">Shop</a><br><a href="#story">About</a><br><a href="#contact">Contact</a></div>
- <div><h5>CUSTOMER CARE</h5><p>Track Order<br>Shipping Policy<br>Returns & Refunds<br>FAQs</p></div>
- <div><h5>FOLLOW US</h5><p>Instagram<br>Facebook<br>YouTube</p></div>
-</footer>
+<nav><a class="logo" href="#">NOIREN<small>WEAR THE NIGHT</small></a><div class="links"><a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#story">ABOUT</a><a href="#contact">CONTACT</a></div><div class="icons">⌕　🛒　<span class="menu">☰</span></div></nav>
+<main id="home"><section class="hero"><div class="hero-inner"><div class="eyebrow">PREMIUM ATTAR</div><h1>NOIREN</h1><h2>WEAR THE NIGHT.</h2><p>Attars that stay beyond the moment. Crafted for presence, confidence and unforgettable nights.</p><a class="btn" href="#shop">SHOP NOW →</a></div></section>
+<div class="features"><div class="feature"><b>PREMIUM INGREDIENTS</b><span>Quality you can feel</span></div><div class="feature"><b>LONG LASTING</b><span>Fragrance that stays</span></div><div class="feature"><b>SKIN FRIENDLY</b><span>Crafted with care</span></div><div class="feature"><b>PERFECT FOR GIFTING</b><span>Make moments special</span></div></div>
+<section><h2 class="section-title">EXPLORE NOIREN</h2><div class="cats"><div class="cat"><h3>For Him</h3><p>Bold. Confident. Unforgettable.</p><a class="btn" href="#shop">EXPLORE MEN →</a></div><div class="cat"><h3>For Her</h3><p>Elegant. Sensual. Timeless.</p><a class="btn" href="#shop">EXPLORE WOMEN →</a></div></div></section>
+<section id="shop"><h2 class="section-title">OUR BESTSELLERS</h2><div id="products" class="products"></div></section>
+<section class="story" id="story"><div><h2>OUR STORY</h2><p>NOIREN was born from a simple belief — a fragrance is more than a scent; it's a part of your story. We create premium, long-lasting attars crafted for those who leave a mark.</p></div><div class="story-box"></div></section>
+<section class="news" id="contact"><h2 class="section-title">JOIN THE NOIREN WORLD</h2><p>Get first access to new attars, launches and exclusive offers.</p><form class="form" onsubmit="event.preventDefault();alert('Thanks for joining NOIREN.');"><input type="email" placeholder="Your email address" required><button>JOIN</button></form></section></main>
+<a class="wa" id="wa" target="_blank">WhatsApp Order</a>
+<section class="payment-strip"><div><b>🔒 SECURE PAYMENTS</b><span>UPI · Cards · Net Banking</span></div><div><b>🚚 CASH ON DELIVERY</b><span>Available Across India</span></div><div><b>↩ EASY RETURNS</b><span>Hassle-free support</span></div><div><b>💬 WHATSAPP ORDER</b><span>Quick support</span></div></section>
+<footer><div><div class="footer-logo">NOIREN</div><p>WEAR THE NIGHT.<br>Premium attars for real moments.</p></div><div><h5>QUICK LINKS</h5><a href="#home">Home</a><br><a href="#shop">Shop</a><br><a href="#story">About</a><br><a href="#contact">Contact</a></div><div><h5>CUSTOMER CARE</h5><p>Track Order<br>Shipping Policy<br>Returns & Refunds<br>FAQs</p></div><div><h5>FOLLOW US</h5><p>Instagram<br>Facebook<br>YouTube</p></div></footer>
 <div class="copy"><span>© 2026 NOIREN. All Rights Reserved.</span><span>Made for fragrance lovers.</span></div>
-
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
-/* NOIREN EASY EDIT
-   Change products, prices, WhatsApp number, tagline etc. in EDIT-ME.json.
-   Then upload the site folder to Netlify again.
-*/
-(async function(){
-  try {
-    const baseCfg = await fetch('EDIT-ME.json').then(r=>r.json());
-    let cfg=baseCfg;
-    try { const live=await fetch('data/products.json?'+Date.now()).then(r=>r.json()); cfg={...baseCfg, products:live.products||baseCfg.products}; } catch(e) {}
-    const brand = cfg.brand || {};
-    document.title = (brand.name || 'NOIREN') + ' — ' + (brand.tagline || 'Wear the Night');
-    document.querySelectorAll('.logo').forEach(e=>{
-      const small=e.querySelector('small');
-      e.childNodes[0].nodeValue=(brand.name||'NOIREN');
-      if(small) small.textContent=(brand.tagline||'WEAR THE NIGHT');
-    });
-    document.querySelectorAll('.hero h1').forEach(e=>e.textContent=brand.name||'NOIREN');
-    document.querySelectorAll('.hero h2').forEach(e=>e.textContent=brand.tagline||'WEAR THE NIGHT.');
-    if(cfg.announcement) document.querySelector('.top').textContent=cfg.announcement;
-    const cards=[...document.querySelectorAll('.products .card')];
-    (cfg.products||[]).forEach((p,i)=>{
-      if(!cards[i]) return;
-      cards[i].querySelector('h4').textContent=p.name||'';
-      cards[i].querySelector('.type').textContent=p.type||'';
-      cards[i].querySelector('.price').textContent=p.price||'';
-      cards[i].querySelector('.stars').textContent=p.rating||'★★★★★';
-    });
-    const productGrid=document.querySelector('.products');
-    if(productGrid && Array.isArray(cfg.products) && cfg.products.length){
-      productGrid.innerHTML=cfg.products.map((p,i)=>`
-        <article class="card">
-          <div class="bottle">${p.image ? `<img class="product-photo" src="${p.image}" alt="${p.name||'NOIREN Attar'}">` : `<div class="fake-bottle"></div>`}</div>
-          <div class="info"><h4>${p.name||''}</h4><div class="type">${p.type||''}</div><div class="price">${p.price||''}</div><div class="stars">${p.rating||'★★★★★'}</div>
-          <a class="btn product-order" target="_blank" href="#">BUY NOW →</a></div>
-        </article>`).join('');
-      document.querySelectorAll('.product-order').forEach((a,i)=>{
-        if(brand.whatsapp){
-          a.href='https://wa.me/'+String(brand.whatsapp).replace(/\D/g,'')+'?text='+encodeURIComponent('Hi '+(brand.name||'NOIREN')+', I want to order '+(cfg.products[i].name||'an attar')+'.');
-        }
-      });
-    }
-
-    const wa=document.querySelector('.wa');
-    if(wa && brand.whatsapp){
-      wa.href='https://wa.me/'+String(brand.whatsapp).replace(/\D/g,'')+
-        '?text='+encodeURIComponent('Hi '+(brand.name||'NOIREN')+', I want to order a perfume.');
-    }
-  } catch(e) { console.warn('NOIREN EDIT-ME.json not loaded', e); }
-})();
-</script>
-
-<script>
-document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{
- const el=document.querySelector(a.getAttribute('href')); if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'})}
-}));
-</script>
-</body>
-</html>
+const client=supabase.createClient("https://khapvtsujgtxdezjkkeh.supabase.co","sb_publishable_CIYRrwfNZVn4on0pK6ndig_2bYZk_L1");
+const waNumber="919999999999";
+const esc=s=>String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+async function loadProducts(){
+ const {data,error}=await client.from("products").select("*").order("created_at",{ascending:false});
+ const grid=document.getElementById("products");
+ if(error){grid.innerHTML="<p style='color:#aaa'>Products are loading...</p>";return}
+ grid.innerHTML=(data||[]).map(p=>`<article class="card"><div class="bottle">${p.image_url?`<img class="product-photo" src="${esc(p.image_url)}" alt="${esc(p.name)}">`:"<div class='fake-bottle'></div>"}</div><div class="info"><h4>${esc(p.name)}</h4><div class="type">${esc(p.category||"PREMIUM ATTAR")} · ${esc(p.size||"6 ml")}</div><div class="price">₹${Number(p.price||0).toLocaleString("en-IN")}</div><div class="stars">★★★★★</div><a class="btn product-order" target="_blank" href="https://wa.me/${waNumber}?text=${encodeURIComponent("Hi NOIREN, I want to order "+(p.name||"an attar")+".")}">BUY NOW →</a></div></article>`).join("")||"<p style='color:#aaa'>No products added yet.</p>";
+}
+document.getElementById("wa").href="https://wa.me/"+waNumber+"?text="+encodeURIComponent("Hi NOIREN, I want to order an attar.");
+loadProducts();
+</script></body></html>
