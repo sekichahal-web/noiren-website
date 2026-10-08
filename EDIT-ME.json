@@ -1,0 +1,15 @@
+{
+  "brand": {
+    "name": "NOIREN",
+    "tagline": "WEAR THE NIGHT.",
+    "whatsapp": "919999999999",
+    "instagram": "#"
+  },
+  "announcement": "FREE SHIPPING ON ORDERS ABOVE ₹999 | 10% OFF YOUR FIRST ORDER",
+  "products": [
+    {"name":"ECLIPSE ATTAR","type":"PREMIUM ATTAR · MEN","price":"₹999","rating":"★★★★★"},
+    {"name":"VELVET ATTAR","type":"PREMIUM ATTAR · WOMEN","price":"₹999","rating":"★★★★★"},
+    {"name":"NOCTURNE ATTAR","type":"PREMIUM ATTAR · UNISEX","price":"₹999","rating":"★★★★★"},
+    {"name":"SIGNATURE ATTAR","type":"PREMIUM ATTAR · MEN","price":"₹999","rating":"★★★★★"}
+  ]
+}
